@@ -47,8 +47,6 @@ public class SystemController {
         return null;
     }
 
-    // コントローラーにproducesとか記載したくない場合
-    // こっちのほうが自然です
     @GetMapping("/system/csv/download")
     public ModelAndView downloadView(){
         List<SellCsv> sells = this.csvService.getSellCsv();

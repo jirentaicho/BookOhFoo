@@ -35,11 +35,11 @@ public class CsvDownLoadView extends AbstractView {
 
     @Override
     protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest request, HttpServletResponse response) throws Exception {
-        System.out.println("call");
+
         String filename = "csv.csv";
 
         String encodedFilename = URLEncoder.encode(filename, "UTF-8");
-        String contentDisposition = String.format("attachment; filename*=UTF-8''%s", encodedFilename);
+        String contentDisposition = String.format("inline");
 
         response.setHeader(CONTENT_TYPE, getContentType());
         response.setHeader(CONTENT_DISPOSITION, contentDisposition);
