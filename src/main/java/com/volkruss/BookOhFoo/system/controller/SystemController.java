@@ -42,14 +42,18 @@ public class SystemController {
         return csvOutput.getCsv(sells);
     }
 
-    // TODO check
-    /*
-    public ModelAndView download(){
+    @GetMapping("/system/pdf")
+    public ModelAndView getPdf(){
+        return null;
+    }
+
+    // コントローラーにproducesとか記載したくない場合
+    // こっちのほうが自然です
+    @GetMapping("/system/csv/download")
+    public ModelAndView downloadView(){
         List<SellCsv> sells = this.csvService.getSellCsv();
         CsvDownLoadView csvDownLoadView = new CsvDownLoadView(SellCsv.class,sells);
-        // ModelAndViewにAbstractViewを渡すことで
-        // renderMergedOutputModelメソッドを発火させることができます
         return new ModelAndView(csvDownLoadView);
     }
-     */
+
 }

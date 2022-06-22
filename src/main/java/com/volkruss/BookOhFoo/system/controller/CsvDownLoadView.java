@@ -44,11 +44,12 @@ public class CsvDownLoadView extends AbstractView {
         response.setHeader(CONTENT_TYPE, getContentType());
         response.setHeader(CONTENT_DISPOSITION, contentDisposition);
 
+        ObjectWriter w = this.csvOutput.getWriterWithSchema();
         ByteArrayOutputStream out = createTemporaryOutputStream();
+
         try(Writer writer = new OutputStreamWriter(out,"Windows-31J")){
-            ObjectWriter w = this.csvOutput.getWriterWithSchema();
-            //w.writeValue(writer,this.data);
-            writer.write("aaaaaaaaa");
+            w.writeValue(writer,this.data);
         }
+        writeToResponse(response,out);
     }
 }

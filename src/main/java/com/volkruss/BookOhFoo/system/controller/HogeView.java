@@ -1,5 +1,6 @@
 package com.volkruss.BookOhFoo.system.controller;
 
+import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.dataformat.csv.CsvGenerator;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
@@ -17,6 +18,7 @@ import java.util.Map;
 import static org.springframework.http.HttpHeaders.CONTENT_DISPOSITION;
 import static org.springframework.http.HttpHeaders.CONTENT_TYPE;
 
+@Deprecated
 public class HogeView extends AbstractView {
 
     protected static final CsvMapper csvMapper = createCsvMapper();
@@ -31,6 +33,7 @@ public class HogeView extends AbstractView {
         CsvMapper mapper = new CsvMapper();
         mapper.configure(CsvGenerator.Feature.ALWAYS_QUOTE_STRINGS,true);
         mapper.findAndRegisterModules();
+        mapper.configure(JsonGenerator.Feature.AUTO_CLOSE_TARGET, false);
         return mapper;
     }
 
@@ -57,14 +60,15 @@ public class HogeView extends AbstractView {
         response.setHeader(CONTENT_TYPE, getContentType());
         response.setHeader(CONTENT_DISPOSITION, contentDisposition);
 
-
         CsvSchema schema = csvMapper.schemaFor(clazz).withHeader();
         ByteArrayOutputStream outputStream = createTemporaryOutputStream();
+
         try (Writer writer = new OutputStreamWriter(outputStream, "Windows-31J")) {
             csvMapper.writer(schema).writeValue(writer, data);
-            writer.write("aaaaaaaaa");
         }
-
+        // 一時的な OutputStream を HTTP レスポンスに書き込みます
+        // これがないと普通に空ファイルがDLされるだけ
+        writeToResponse(response,outputStream);
     }
 
 }
