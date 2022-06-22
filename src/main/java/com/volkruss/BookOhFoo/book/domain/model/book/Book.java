@@ -25,4 +25,25 @@ public class Book {
     public String getBookIdStr(){
         return this.bookId.getId();
     }
+
+    @Override
+    public int hashCode(){
+        int hashcode = bookId.hashCode();
+        return hashcode;
+    }
+
+    @Override
+    public boolean equals(Object anObject){
+        boolean equal = false;
+        if(anObject != null && this.getClass() == anObject.getClass()){
+            Book book = (Book) anObject;
+            equal = book.bookId.getId().equals(this.bookId.getId());
+        }
+        return equal;
+    }
+
+    @Override
+    public String toString(){
+        return "Book [BookId = " + this.bookId + ", price = " + this.price.getValue() + ", title = " + this.title;
+    }
 }

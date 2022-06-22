@@ -10,4 +10,11 @@ public class BookId {
     public String getId(){
         return this.bookId;
     }
+
+    @Override
+    public int hashCode(){
+        int hash =
+                + this.bookId.hashCode();
+        return hash;
+    }
 }
