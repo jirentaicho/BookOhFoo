@@ -1,3 +1,38 @@
+# 画面
+
+## TOP
+
+![image](https://user-images.githubusercontent.com/82934821/174936127-2c40f2d2-cf87-4bf9-a6d4-b7a767bcccb4.png)
+
+## 買取依頼画面
+
+![image](https://user-images.githubusercontent.com/82934821/174936182-d783e0e1-8792-4cdc-a65b-fe4d6e951e91.png)
+
+行は追加可能
+
+## 買取確認画面
+
+![image](https://user-images.githubusercontent.com/82934821/174936245-f3819a55-fdd1-4e9d-b014-fe187b0d669b.png)
+
+
+## 買取可能な本情報の登録画面
+
+![image](https://user-images.githubusercontent.com/82934821/174936335-82f5408b-6f93-403a-9d35-83af54154c4d.png)
+
+## 買取可能な本情報の一覧画面
+
+![image](https://user-images.githubusercontent.com/82934821/174936413-71339a0c-6dc0-44f8-a447-943efdfbeca8.png)
+
+
+## 本情報の修正画面
+
+![image](https://user-images.githubusercontent.com/82934821/174936475-0b17ee92-7d77-4984-8ada-b844a33aa01b.png)
+
+## 買取依頼確定情報のcsv出力画面
+
+![image](https://user-images.githubusercontent.com/82934821/174936657-625cd928-b50f-4d6a-a666-543d36f44eb0.png)
+
+* ダウンロードリンクからファイルダウンロード可能
 
 # 概要
 
