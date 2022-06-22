@@ -1,0 +1,60 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/header :: head_fragment(title = '確認',scripts = ~{::script})">
+</head>
+<body>
+<nav th:replace="common/nav :: nav_fragment">
+</nav>
+<h1>査定結果確認ページ</h1>
+<div class="container">
+    <div class="row">
+        <P>以下の内容に同意していただき、確定してください</P>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>買取番号(通常hidden)</th>
+                <th>買取合計金額</th>
+                <th>キャンペーンボーナス(合計加算金額)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td th:text="${result.sellNo}"></td>
+                <td th:text="${result.amt}"></td>
+                <td th:text="${result.campaign}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <h1>明細</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>商品名</th>
+                    <th>値段</th>
+                    <th>数量</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="detail : ${result.list}">
+                    <td th:text="${detail.name}"></td>
+                    <td th:text="${detail.price}"></td>
+                    <td th:text="${detail.count}"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <form th:action="@{/sell/submit}" th:object="${submitForm}" method="post">
+
+            <input type="hidden" name="sellId" th:value="${result.sellNo}" />
+            <div>
+                <button type="submit">確定する</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script th:href="@{/webjars/jquery/3.5.0/js/jquery.min.js}"></script>
+<script th:href="@{/webjars/bootstrap/5.1.3/js/bootstrap.min.js}"></script>
+</body>
+</html>
